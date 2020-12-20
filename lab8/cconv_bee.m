@@ -26,25 +26,14 @@ function y = cconv_bee (x, h, N)
 x = [x, zeros(1, N - length(x))];
 h = [h, zeros(1, N - length(h))];
 
-
-y = zeros(1, 2 * N - 1);
-h_flp = cflip_bee(x, N);
-
-for n = 1:2*N - 1
+for n = 1:N
   y(n) = 0;
-  h_temp = cshift_bee(h_flp, -i+1, N);
-  if (n <= N)
-    for i = 1:n
-      y(n) += h_temp(i) * x(i)
-    end 
-   
-  else
-    for i = n - N + 1: N
-      y(n) += h_temp(i) * x(i)
+  for i = 1:N
+    j = n - i + 1;
+    if (j <= 0)
+      j = N + j;
     end
-  end
-end  
-    
-    
- 
+   y(n) = [y(n) + x(i)*h(j)];
+  end 
+ end 
 endfunction
