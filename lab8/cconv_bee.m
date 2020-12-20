@@ -17,12 +17,34 @@
 ## -*- texinfo -*- 
 ## @deftypefn {} {@var{retval} =} cconv_bee (@var{input1}, @var{input2})
 ##
-## @seealso{}
-## @end deftypefn
 
 ## Author: Abdul Ahad <Abdul Ahad@AHAD-DESKTOP>
 ## Created: 2020-12-20
 
-function retval = cconv_bee (input1, input2)
+function y = cconv_bee (x, h, N)
 
+x = [x, zeros(1, N - length(x))];
+h = [h, zeros(1, N - length(h))];
+
+
+y = zeros(1, 2 * N - 1);
+h_flp = cflip_bee(x, N);
+
+for n = 1:2*N - 1
+  y(n) = 0;
+  h_temp = cshift_bee(h_flp, -i+1, N);
+  if (n <= N)
+    for i = 1:n
+      y(n) += h_temp(i) * x(i)
+    end 
+   
+  else
+    for i = n - N + 1: N
+      y(n) += h_temp(i) * x(i)
+    end
+  end
+end  
+    
+    
+ 
 endfunction
