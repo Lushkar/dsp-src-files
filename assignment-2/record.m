@@ -9,7 +9,7 @@ recObj = audiorecorder(Fs);
 
 
 disp('Start speaking.')
-recordblocking(recObj,5);
+recordblocking(recObj,2);
 disp('End of Recording.');
 
 play(recObj);
