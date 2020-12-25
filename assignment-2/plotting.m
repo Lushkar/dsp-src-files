@@ -1,5 +1,8 @@
 subplot(2, 1, 1);
-plot(x);
+t_axis = 1:1/(Fs*T):T-1/(Fs*T);
+plot(t_axis, x);
+% size(1:1/(Fs*T):T-1/(Fs*T))
+% size(x)
 title('Audio Signal x(t)')
 xlabel('time (t)')
 ylabel('x(t)')
