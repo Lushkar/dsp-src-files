@@ -9,4 +9,4 @@ for i = 1:T:length(x)
 end   
 
 y = transpose(y);
-endfunction
+end
