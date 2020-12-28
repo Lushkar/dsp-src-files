@@ -1,4 +1,4 @@
-function y = zoh (x, T)
+function y = ZeroOrderHold (x, T)
 y = [];
 y = 0;
 for i = 1:T:length(x)
